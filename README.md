@@ -21,8 +21,7 @@ Mapa
 Instrucciones:
   - rake db:create
   - rake db:migrate
-  - rake db:seed  (Para crear un vehiculo con 3 coordenadas iniciales)
+  - rake db:seed  (si se quiere crear el vehiculo con 3 coordenadas iniciales)
   - rails s
-  - El root_path dirige a una lista de vehiculos
-  - Se muestran solo las 10 coordenadas mas recientes por vehiculo
+  - Se muestran solo las 10 coordenadas mas recientes para el vehiculo
   - github url para ver commits : https://github.com/gipsyMartinez/beetrack/
