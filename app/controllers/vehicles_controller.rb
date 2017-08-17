@@ -1,16 +1,20 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: [:show]
+  before_action :set_vehicle, only: [:show_waypoints]
   def index
     @vehicles = Vehicle.all
   end
 
   def show
-    # Se muestran solo las ultimas 10
-    @locations = Location.where(vehicle_id: @vehicle.id).order("id desc").limit(10)
+    # Ultima ubicacion por cada vehiculo
+    @vehicles = Vehicle.all
+    @vehicles_last_location = @vehicles.map{ |v| v.locations.last }
     respond_to do |format|
       format.html
-      format.json { render json: { locations: @locations } }
+      format.json { render json: { locations: @vehicles_last_location } }
     end
+  end
+
+  def show_waypoints
   end
 
   private

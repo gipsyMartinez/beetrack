@@ -2,12 +2,13 @@ class Api::V1::LocationsController < Api::V1::BaseController
   before_action :catch_vehicle, only: [:create]
 
   def create
-    location = @vehicle.locations.create(locations_params)
-    params[:created_at] = params[:sent_at] if params[:sent_at].present?
-    if location.save
+    @location = @vehicle.locations.create(locations_params)
+    # params[:created_at] = params[:sent_at] if params[:sent_at].present?
+    # raise (params).inspect
+    if @location.save
       render status: 200, json: { message: " Guardado con exito! " }
     else
-      render status: 404, json: { message: " No se ha guardado! ", errors: location.errors.messages }
+      render status: 404, json: { message: " No se ha guardado! ", errors: @location.errors.messages }
     end
   end
 

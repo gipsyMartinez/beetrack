@@ -1,6 +1,6 @@
 $( document ).ready(function() {
   var map;
-  var json = "http://localhost:3000/show/1.json";
+  var json = "http://localhost:3000/show.json";
   var infowindow = new google.maps.InfoWindow();
 
   function initialize() {
@@ -15,11 +15,13 @@ $( document ).ready(function() {
     $.getJSON(json, function(json) {
     $.each(json.locations, function (key, data) {
       var latLng = new google.maps.LatLng(data.latitude, data.longitude);
+      // Muestra ultima ubicacion del vehiculo al hacer click sobre el marker
+      var description = 'Vehiculo # '+data.vehicle_id+": Lat: "+data.latitude + ", Long: "+data.longitude
       var marker = new google.maps.Marker({
         position: latLng,
         map: map,
       });
-      bindInfoWindow(marker, map, infowindow);
+      bindInfoWindow(marker, map, infowindow, description);
     });
     });
   }

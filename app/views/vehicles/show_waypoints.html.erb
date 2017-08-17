@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9"><h1>Vehicle #<%= @vehicle.id  %> historical waypoints </h1></div>
+    <div class="col-md-3"><%= link_to "Back", root_path, class: "btn btn-info pull-right btn-back" %></div>
+  </div>
+  <hr>
+  <br>
+  <table class="table table-hover">
+    <tr>
+      <th>Location #</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+    </tr>
+
+    <% @vehicle.locations.each_with_index do |locations, i| %>
+      <% index = i + 1 %>
+      <tr>
+        <td><%= index %></td>
+        <td><%= locations.latitude %></td>
+        <td><%= locations.longitude %></td>
+      </tr>
+    <% end %>
+
+  </table>
+</div>
+

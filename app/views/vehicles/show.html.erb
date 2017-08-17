@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9"><h1>Vehicle number <%= @vehicle.id %> Details</h1></div>
+    <div class="col-md-9"><h1>Vehicles' most recent coordinate</h1></div>
     <div class="col-md-3"><%= link_to "Back", root_path, class: "btn btn-info pull-right btn-back" %></div>
   </div>
   <hr>
-  <p><strong>Vehicle identifier:</strong> <%= @vehicle.vehicle_identifier %> <p>
   <br>
 
   <div id="map" class="map-border"></div>

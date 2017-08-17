@@ -1,4 +1,4 @@
-# beetrack
+# Beetrack
 
 - Version de ruby: 2.2.2
 - Version de Rails: 4.2.0
@@ -17,12 +17,17 @@ Mapa
   - Api: Google map
   - Codigo ubicado en app/assets/javascript/map.js
 
+Procesos Asincronos
+  - Se usa la gema delayed_job_active_record, la cual permite guardar en una tabla (delayed_jobs) todos los procesos ejecutados en background, en este caso se usa cuando el api recibe cada waypoint.
+
+Adicional
+  - El root_path muestra un listado de todos los vehiculos
+  - La ruta /show_waypoints/:id muestra el listado historico de waypoints por cada vehiculo
 
 Instrucciones:
   - rake db:create
   - rake db:migrate
-  - rake db:seed  (Para crear un vehiculo con 3 coordenadas iniciales)
+  - rake db:seed  (si se quiere crear un vehiculo con 3 coordenadas iniciales)
   - rails s
-  - El root_path dirige a una lista de vehiculos
-  - Se muestran solo las 10 coordenadas mas recientes por vehiculo
   - github url para ver commits : https://github.com/gipsyMartinez/beetrack/
+

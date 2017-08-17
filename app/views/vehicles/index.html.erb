@@ -1,18 +1,22 @@
 <div class="container">
-  <h1>Vehicles List</h1>
+  <div class="row">
+    <div class="col-md-9"><h1>Vehicle List </h1></div>
+    <div class="col-md-3"><%= link_to "Show vehicles' recent location (Map)", vehicle_show_path, class: "btn btn-success pull-right btn-back" %></div>
+  </div>
+  <hr>
   <br>
   <table class="table table-hover">
     <tr>
       <th>#</th>
       <th>Vehicle identifier</th>
-      <th>Show recents coordinates</th>
+      <th>All Historical coordinates for vehicle</th>
     </tr>
 
     <% @vehicles.each do |vehicle| %>
       <tr>
         <td><%= vehicle.id %></td>
         <td><%= vehicle.vehicle_identifier %></td>
-        <td><%= link_to "Coordinates", vehicle_show_path(vehicle.id), class: "btn btn-info" %></td>
+        <td><%= link_to "Historical waypoints", vehicle_waypoints_path(vehicle.id), class: "btn btn-info" %></td>
       </tr>
     <% end %>
 

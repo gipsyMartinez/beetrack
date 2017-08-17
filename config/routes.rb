@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/show/:id" => "vehicles#show", :as => "vehicle_show"
+  get "/show/" => "vehicles#show", :as => "vehicle_show"
+  get "/show_waypoints/:id" => "vehicles#show_waypoints", :as => "vehicle_waypoints"
   root 'vehicles#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

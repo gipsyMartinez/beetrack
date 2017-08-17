@@ -29,6 +29,9 @@ gem 'bootstrap-sass', '~> 3.2.0'
 # Add vendor prefixes on assets compile.
 gem 'autoprefixer-rails'
 
+#Jobs
+gem 'delayed_job_active_record'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
