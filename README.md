@@ -27,7 +27,7 @@ Adicional
 Instrucciones:
   - rake db:create
   - rake db:migrate
-  - rake db:seed  (si se quiere crear un vehiculo con 3 coordenadas iniciales)
+  - rake db:seed  (si se quiere crear el vehiculo con 3 coordenadas iniciales)
   - rails s
   - github url para ver commits : https://github.com/gipsyMartinez/beetrack/
 
