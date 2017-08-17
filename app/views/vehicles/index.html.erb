@@ -1,18 +1,22 @@
-<h1>Vehicles List</h1>
-
-<table>
-  <tr>
-    <th>Vehicle</th>
-    <th>Vehicle identifier</th>
-    <th>Show recents coordinates</th>
-  </tr>
-
-  <% @vehicles.each do |vehicle| %>
+<div class="container">
+  <h1>Vehicles List</h1>
+  <br>
+  <table class="table table-hover">
     <tr>
-      <td><%= vehicle.id %></td>
-      <td><%= vehicle.vehicle_identifier %></td>
-      <td><%= link_to "Show recent coordinates", vehicle_show_path(vehicle.id) %></td>
+      <th>#</th>
+      <th>Vehicle identifier</th>
+      <th>Show recents coordinates</th>
     </tr>
-  <% end %>
 
-</table>
+    <% @vehicles.each do |vehicle| %>
+      <tr>
+        <td><%= vehicle.id %></td>
+        <td><%= vehicle.vehicle_identifier %></td>
+        <td><%= link_to "Coordinates", vehicle_show_path(vehicle.id), class: "btn btn-info" %></td>
+      </tr>
+    <% end %>
+
+  </table>
+</div>
+
+

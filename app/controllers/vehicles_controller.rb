@@ -5,7 +5,8 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    @locations = Location.where(vehicle_id: @vehicle.id)
+    # Se muestran solo las ultimas 10
+    @locations = Location.where(vehicle_id: @vehicle.id).order("id desc").limit(10)
     respond_to do |format|
       format.html
       format.json { render json: { locations: @locations } }

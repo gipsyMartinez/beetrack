@@ -1,12 +1,27 @@
 # beetrack
 
-Ruby version: 2.2.2
-Rails version: 4.2.0
-Database: Postgres
+- Version de ruby: 2.2.2
+- Version de Rails: 4.2.0
+- Base de datos: Postgres
 
 Testing
+  - Rspec
+  - Gemas usadas: rspec-rails, shoulda-
+  - Codigo ubicado en /spec
 
-Framework: Rspec
-gems used:
-  gem 'shoulda-matchers', '~> 3.1'
-  gem 'shoulda-matchers', '~> 3.1'
+Style
+  - Boostrap
+  - gemas usadas: bootstrap-sass, autoprefixer-rails
+
+Mapa
+  - Api: Google map
+  - Codigo ubicado en app/assets/javascript/map.js
+
+
+Instrucciones:
+  - rake db:create
+  - rake db:migrate
+  - rake db:seed  (Para crear un vehiculo con 3 coordenadas iniciales)
+  - rails s
+  - El root_path dirige a una lista de vehiculos
+  - Se muestran solo las 10 coordenadas mas recientes

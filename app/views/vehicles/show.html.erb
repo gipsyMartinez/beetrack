@@ -1,11 +1,12 @@
-<h1>Vehicles Number <%= @vehicle.id %> Details</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9"><h1>Vehicle number <%= @vehicle.id %> Details</h1></div>
+    <div class="col-md-3"><%= link_to "Back", root_path, class: "btn btn-info pull-right btn-back" %></div>
+  </div>
+  <hr>
+  <p><strong>Vehicle identifier:</strong> <%= @vehicle.vehicle_identifier %> <p>
+  <br>
 
-<p><strong>Vehicle vehicle_identifier</strong></p>
-<p> <%= @vehicle.vehicle_identifier %> </p>
-<br>
+  <div id="map" class="map-border"></div>
+</div>
 
-<!-- <div style='width: 800px;'>
-  <div id="map-canvas" style='width: 800px; height: 400px;'></div>
-</div> -->
-
-<div id="map" style="border: 2px solid #3872ac;"></div>
