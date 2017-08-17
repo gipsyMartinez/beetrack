@@ -6,7 +6,7 @@
 
 Testing
   - Rspec
-  - Gemas usadas: rspec-rails, shoulda-
+  - Gemas usadas: rspec-rails, shoulda-matchers
   - Codigo ubicado en /spec
 
 Style
@@ -24,4 +24,5 @@ Instrucciones:
   - rake db:seed  (Para crear un vehiculo con 3 coordenadas iniciales)
   - rails s
   - El root_path dirige a una lista de vehiculos
-  - Se muestran solo las 10 coordenadas mas recientes
+  - Se muestran solo las 10 coordenadas mas recientes por vehiculo
+  - github url para ver commits : https://github.com/gipsyMartinez/beetrack/
