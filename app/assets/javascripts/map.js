@@ -18,11 +18,8 @@ $( document ).ready(function() {
       var marker = new google.maps.Marker({
         position: latLng,
         map: map,
-        // icon: icon,
-        title: data.title
       });
-      var details = data.website + ", " + data.phone + ".";
-      bindInfoWindow(marker, map, infowindow, details);
+      bindInfoWindow(marker, map, infowindow);
     });
     });
   }
