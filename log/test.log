@@ -1,0 +1,282 @@
+  [1m[36m (222.5ms)[0m  [1mDROP DATABASE IF EXISTS "beetrack_test"[0m
+  [1m[35m (664.7ms)[0m  CREATE DATABASE "beetrack_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (59.5ms)[0m  CREATE TABLE "locations" ("id" serial primary key, "latitude" float, "longitude" float, "vehicle_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (59.2ms)[0m  [1mCREATE  INDEX  "index_locations_on_vehicle_id" ON "locations" USING btree ("vehicle_id")[0m
+  [1m[35m (96.9ms)[0m  CREATE TABLE "vehicles" ("id" serial primary key, "vehicle_identifier" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (48.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (49.2ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (1.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (7.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20170816231431')
+  [1m[36m (10.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20170816231421')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mVehicle Exists (1.6ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" IS NULL LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  BEGIN
+  [1m[36mVehicle Exists (1.6ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" IS NULL LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (1.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (1.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36mVehicle Exists (1.3ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" IS NULL LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mVehicle Load (1.4ms)[0m  SELECT  "vehicles".* FROM "vehicles"  ORDER BY "vehicles"."id" ASC LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "vehicles" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", "2017-08-16 23:46:13.326948"], ["updated_at", "2017-08-16 23:46:13.326948"]]
+  [1m[36m (0.7ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.2ms)[0m  [1mUPDATE "vehicles" SET "vehicle_identifier" = $1, "updated_at" = $2 WHERE "vehicles"."id" = $3[0m  [["vehicle_identifier", "an arbitrary value"], ["updated_at", "2017-08-16 23:46:13.335438"], ["id", 1]]
+  [1m[35m (0.6ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mVehicle Exists (2.1ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'an arbitrary value' LIMIT 1[0m
+  [1m[35mVehicle Exists (1.0ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'AN ARBITRARY VALUE' LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36mVehicle Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" IS NULL LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mVehicle Load (1.2ms)[0m  SELECT  "vehicles".* FROM "vehicles"  ORDER BY "vehicles"."id" ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "vehicles" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", "2017-08-16 23:46:55.083430"], ["updated_at", "2017-08-16 23:46:55.083430"]]
+  [1m[36m (0.4ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "vehicles" SET "vehicle_identifier" = $1, "updated_at" = $2 WHERE "vehicles"."id" = $3[0m  [["vehicle_identifier", "an arbitrary value"], ["updated_at", "2017-08-16 23:46:55.090254"], ["id", 2]]
+  [1m[35m (0.8ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mVehicle Exists (1.4ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'an arbitrary value' LIMIT 1[0m
+  [1m[35mVehicle Exists (0.9ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'AN ARBITRARY VALUE' LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Processing by VehiclesController#index as HTML
+  [1m[36mVehicle Load (1.6ms)[0m  [1mSELECT "vehicles".* FROM "vehicles"[0m
+  Rendered vehicles/index.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 822ms (Views: 800.6ms | ActiveRecord: 3.9ms)
+  [1m[35m (0.7ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  BEGIN
+  [1m[36m (0.6ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVehicle Exists (1.2ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" IS NULL LIMIT 1
+  [1m[36m (0.8ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Processing by VehiclesController#index as HTML
+  [1m[35mVehicle Load (0.7ms)[0m  SELECT "vehicles".* FROM "vehicles"
+  Rendered vehicles/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 421ms (Views: 419.2ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+Processing by VehiclesController#index as HTML
+  [1m[36mVehicle Load (1.2ms)[0m  [1mSELECT "vehicles".* FROM "vehicles"[0m
+  Rendered vehicles/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVehicle Exists (1.9ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'abc' LIMIT 1
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "vehicles" ("vehicle_identifier", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["vehicle_identifier", "abc"], ["created_at", "2017-08-16 23:58:11.987534"], ["updated_at", "2017-08-16 23:58:11.987534"]]
+  [1m[35m (1.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by VehiclesController#index as HTML
+  [1m[36mVehicle Load (0.8ms)[0m  [1mSELECT "vehicles".* FROM "vehicles"[0m
+  Rendered vehicles/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 437ms (Views: 435.1ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.7ms)[0m  ROLLBACK
+  [1m[36m (0.8ms)[0m  [1mBEGIN[0m
+Processing by VehiclesController#index as HTML
+  [1m[35mVehicle Load (0.9ms)[0m  SELECT "vehicles".* FROM "vehicles"
+  Rendered vehicles/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.9ms)
+  [1m[36m (0.9ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVehicle Exists (2.2ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'abc' LIMIT 1
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "vehicles" ("vehicle_identifier", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["vehicle_identifier", "abc"], ["created_at", "2017-08-17 00:00:32.352797"], ["updated_at", "2017-08-17 00:00:32.352797"]]
+  [1m[35m (0.8ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by VehiclesController#index as HTML
+  [1m[36mVehicle Load (0.9ms)[0m  [1mSELECT "vehicles".* FROM "vehicles"[0m
+  Rendered vehicles/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 531ms (Views: 529.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.7ms)[0m  ROLLBACK
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+Processing by VehiclesController#index as HTML
+  [1m[35mVehicle Load (0.8ms)[0m  SELECT "vehicles".* FROM "vehicles"
+  Rendered vehicles/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVehicle Exists (1.1ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'abc' LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "vehicles" ("vehicle_identifier", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["vehicle_identifier", "abc"], ["created_at", "2017-08-17 00:00:32.931044"], ["updated_at", "2017-08-17 00:00:32.931044"]]
+  [1m[35m (0.7ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by VehiclesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mVehicle Load (1.3ms)[0m  [1mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered vehicles/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 28ms (Views: 5.9ms | ActiveRecord: 3.6ms)
+  [1m[35m (0.6ms)[0m  ROLLBACK
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mVehicle Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'abc' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "vehicles" ("vehicle_identifier", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["vehicle_identifier", "abc"], ["created_at", "2017-08-17 00:00:32.977122"], ["updated_at", "2017-08-17 00:00:32.977122"]]
+  [1m[36m (0.4ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by VehiclesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mVehicle Load (0.8ms)[0m  SELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered vehicles/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.8ms)
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVehicle Exists (2.7ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'abc' LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "vehicles" ("vehicle_identifier", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["vehicle_identifier", "abc"], ["created_at", "2017-08-17 00:02:15.745876"], ["updated_at", "2017-08-17 00:02:15.745876"]]
+  [1m[35m (0.9ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by VehiclesController#index as HTML
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered vehicles/index.html.erb within layouts/application (0.5ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 16ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+  [1m[36mVehicle Load (0.9ms)[0m  [1mSELECT "vehicles".* FROM "vehicles"[0m
+  [1m[35m (0.8ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+Processing by VehiclesController#index as HTML
+  Rendered vehicles/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.9ms)[0m  ROLLBACK
+  [1m[36m (0.7ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mVehicle Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'abc' LIMIT 1[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "vehicles" ("vehicle_identifier", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["vehicle_identifier", "abc"], ["created_at", "2017-08-17 00:02:15.802438"], ["updated_at", "2017-08-17 00:02:15.802438"]]
+  [1m[36m (0.6ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by VehiclesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mVehicle Load (0.8ms)[0m  SELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT 1  [["id", 8]]
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered vehicles/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 19ms (Views: 3.7ms | ActiveRecord: 3.0ms)
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVehicle Exists (0.8ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'abc' LIMIT 1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "vehicles" ("vehicle_identifier", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["vehicle_identifier", "abc"], ["created_at", "2017-08-17 00:02:15.845840"], ["updated_at", "2017-08-17 00:02:15.845840"]]
+  [1m[35m (0.9ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by VehiclesController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mVehicle Load (1.1ms)[0m  [1mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  Rendered vehicles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mVehicle Exists (1.6ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" IS NULL LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  ROLLBACK
+  [1m[36m (0.9ms)[0m  [1mBEGIN[0m
+  [1m[35mVehicle Load (1.8ms)[0m  SELECT  "vehicles".* FROM "vehicles"  ORDER BY "vehicles"."id" ASC LIMIT 1
+  [1m[36m (0.7ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "vehicles" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", "2017-08-17 00:09:14.542285"], ["updated_at", "2017-08-17 00:09:14.542285"]]
+  [1m[36m (0.6ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.9ms)[0m  [1mUPDATE "vehicles" SET "vehicle_identifier" = $1, "updated_at" = $2 WHERE "vehicles"."id" = $3[0m  [["vehicle_identifier", "an arbitrary value"], ["updated_at", "2017-08-17 00:09:14.551336"], ["id", 10]]
+  [1m[35m (0.8ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mVehicle Exists (1.8ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'an arbitrary value' LIMIT 1[0m
+  [1m[35mVehicle Exists (1.0ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'AN ARBITRARY VALUE' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVehicle Exists (1.6ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'abc' LIMIT 1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "vehicles" ("vehicle_identifier", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["vehicle_identifier", "abc"], ["created_at", "2017-08-17 00:09:24.970674"], ["updated_at", "2017-08-17 00:09:24.970674"]]
+  [1m[35m (0.4ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by VehiclesController#index as HTML
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered vehicles/index.html.erb within layouts/application (0.6ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.0ms)
+  [1m[36mVehicle Load (0.8ms)[0m  [1mSELECT "vehicles".* FROM "vehicles"[0m
+  [1m[35m (0.7ms)[0m  ROLLBACK
+  [1m[36m (0.7ms)[0m  [1mBEGIN[0m
+Processing by VehiclesController#index as HTML
+  Rendered vehicles/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mVehicle Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'abc' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "vehicles" ("vehicle_identifier", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["vehicle_identifier", "abc"], ["created_at", "2017-08-17 00:09:25.016149"], ["updated_at", "2017-08-17 00:09:25.016149"]]
+  [1m[36m (0.4ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by VehiclesController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mVehicle Load (1.0ms)[0m  SELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT 1  [["id", 12]]
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered vehicles/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 17ms (Views: 3.5ms | ActiveRecord: 3.2ms)
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mVehicle Exists (1.0ms)[0m  SELECT  1 AS one FROM "vehicles" WHERE "vehicles"."vehicle_identifier" = 'abc' LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "vehicles" ("vehicle_identifier", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["vehicle_identifier", "abc"], ["created_at", "2017-08-17 00:09:25.047961"], ["updated_at", "2017-08-17 00:09:25.047961"]]
+  [1m[35m (0.7ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by VehiclesController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mVehicle Load (0.7ms)[0m  [1mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  Rendered vehicles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.5ms)[0m  ROLLBACK

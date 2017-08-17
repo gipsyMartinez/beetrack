@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Beetrack</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "application" %>
+  <script src="//maps.google.com/maps/api/js?key=AIzaSyBZGgxb_0d9HeE_QXOzrM6R0Kr0cCMlk5k"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+  <%= javascript_include_tag "vehicles.js" %>
+
+</body>
+</html>
