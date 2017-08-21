@@ -14,6 +14,7 @@ $( document ).ready(function() {
 
     $.getJSON(json, function(json) {
     $.each(json.locations, function (key, data) {
+
       var latLng = new google.maps.LatLng(data.latitude, data.longitude);
       // Muestra ultima ubicacion del vehiculo al hacer click sobre el marker
       var description = 'Vehiculo # '+data.vehicle_id+": Lat: "+data.latitude + ", Long: "+data.longitude

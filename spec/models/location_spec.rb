@@ -9,15 +9,11 @@ RSpec.describe Location, type: :model do
     it "longitude should be present"  do
       should validate_presence_of :longitude
     end
-
-    it "vehicle should be present"  do
-      should validate_presence_of :vehicle
-    end
   end
 
   context "Relationships" do
-    it "should belong_to vehicle" do
-      should belong_to(:vehicle)
+    it "should has_many waypoints" do
+      should have_many(:waypoints)
     end
   end
 end

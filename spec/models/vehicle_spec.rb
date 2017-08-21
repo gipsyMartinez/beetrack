@@ -12,8 +12,8 @@ RSpec.describe Vehicle, type: :model do
   end
 
   context "Relationships" do
-    it "should have_many locations" do
-      should have_many(:locations).dependent(:destroy)
+    it "should have_many waypoints" do
+      should have_many(:waypoints)
     end
   end
 end

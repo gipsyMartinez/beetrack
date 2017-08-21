@@ -7,7 +7,7 @@ class VehiclesController < ApplicationController
   def show
     # Ultima ubicacion por cada vehiculo
     @vehicles = Vehicle.all
-    @vehicles_last_location = @vehicles.map{ |v| v.locations.last }
+    @vehicles_last_location = @vehicles.map{ |v| v.locations.last }.compact
     respond_to do |format|
       format.html
       format.json { render json: { locations: @vehicles_last_location } }

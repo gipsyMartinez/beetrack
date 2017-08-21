@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817172445) do
+ActiveRecord::Schema.define(version: 20170820155957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,17 +35,25 @@ ActiveRecord::Schema.define(version: 20170817172445) do
   create_table "locations", force: :cascade do |t|
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "vehicle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "locations", ["vehicle_id"], name: "index_locations_on_vehicle_id", using: :btree
 
   create_table "vehicles", force: :cascade do |t|
     t.string   "vehicle_identifier"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
+
+  create_table "waypoints", force: :cascade do |t|
+    t.integer  "location_id"
+    t.integer  "vehicle_id"
+    t.datetime "sent_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "waypoints", ["location_id"], name: "index_waypoints_on_location_id", using: :btree
+  add_index "waypoints", ["vehicle_id"], name: "index_waypoints_on_vehicle_id", using: :btree
 
 end

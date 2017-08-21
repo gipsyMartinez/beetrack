@@ -19,6 +19,7 @@ Mapa
 
 Procesos Asincronos
   - Se usa la gema delayed_job_active_record, la cual permite guardar en una tabla (delayed_jobs) todos los procesos ejecutados en background, en este caso se usa cuando el api recibe cada waypoint.
+  - Para que el proceso aincrono se ejecute debe colocarse el siguiente comando rake jobs:work
 
 Adicional
   - El root_path muestra un listado de todos los vehiculos
@@ -27,7 +28,7 @@ Adicional
 Instrucciones:
   - rake db:create
   - rake db:migrate
-  - rake db:seed  (si se quiere crear el vehiculo con 3 coordenadas iniciales)
+  - rake db:seed  (si se quiere crear un vehiculo con coordenadas iniciales)
   - rails s
   - github url para ver commits : https://github.com/gipsyMartinez/beetrack/
 

@@ -6,8 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-  vehicle = Vehicle.create(vehicle_identifier: "vehicle 1")
+  vehicle = Vehicle.create(vehicle_identifier: 'Vehicle one')
+  location = Location.create(latitude: 52.404224, longitude:  -5.0785248)
+  waypoint = Waypoint.create(location_id: location.id, vehicle_id: vehicle.id, sent_at: DateTime.now)
 
-  Location.create(latitude: 51.482708, longitude:  -3.165881, vehicle: vehicle)
-  Location.create(latitude: 53.22952, longitude:  -4.129987, vehicle: vehicle)
-  Location.create(latitude: 52.415524, longitude:  -4.063066, vehicle: vehicle)
